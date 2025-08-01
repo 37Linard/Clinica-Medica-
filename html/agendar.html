@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Agendar Consulta</title>
+  <link rel="stylesheet" href="../css/styleagendar.css
+  " />
+  <style>
+    body {
+      background: url('../images/fundoindex.jpg') no-repeat center center / cover;
+      min-height: 100vh;
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Hospital Vida e Saúde</h1>
+    </header>
+    <h2>Agendar Consulta</h2>
+    <form>
+      <label for="especialidade">Especialidade*</label>
+      <select class="select" id="especialidade" name="especialidade" required>
+        <option value="">Selecione</option>
+        <option value="cardiologia">Cardiologia</option>
+        <option value="dermatologia">Dermatologia</option>
+        <option value="ginecologia">Ginecologia</option>
+        <option value="neurologia">Neurologia</option>
+        <option value="ortopedia">Ortopedia</option>
+        <option value="pediatria">Pediatria</option>
+        <option value="psiquiatria">Psiquiatria</option>
+        <option value="urologia">Urologia</option>
+      </select>
+      <label for="medico">Médico*</label>
+      <select class="select" id="medico" name="medico" required>
+        <option value="">Selecione um médico</option>
+        <option value="dr-joao-silva">Dr. João Silva</option>
+        <option value="dra-maria-oliveira">Dra. Maria Oliveira</option>
+        <option value="dr-carlos-santos">Dr. Carlos Santos</option>
+      </select>
+      <label for="data">Data*</label>
+      <input class="date-input" type="date" id="data" name="data" required placeholder="dd/mm/aaaa">
+      <label for="hora">Horário*</label>
+      <select class="select" id="hora" name="hora" required>
+        <option value="">Selecione</option>
+        <option value="09:00">09:00</option>
+        <option value="09:30">09:30</option>
+        <option value="10:00">10:00</option>
+        <option value="10:30">10:30</option>
+        <option value="11:00">11:00</option>
+        <option value="11:30">11:30</option>
+        <option value="12:00">12:00</option>
+        <option value="12:30">12:30</option>
+        <option value="13:00">13:00</option>
+        <option value="13:30">13:30</option>
+        <option value="14:00">14:00</option>
+        <option value="14:30">14:30</option>
+        <option value="15:00">15:00</option>
+        <option value="15:30">15:30</option>
+        <option value="16:00">16:00</option>
+        <option value="16:30">16:30</option>
+        <option value="17:00">17:00</option>
+        <option value="17:30">17:30</option>
+        <option value="18:00">18:00</option>
+      </select>
+      <div class="botoes-agendar">
+        <button type="button" class="btn-secondary" onclick="location.href='index.html'">Voltar</button>
+        <button type="submit" class="btn-primary-salvar">Agendar</button>
+      </div>
+    </form>
+    <div id="mensagem-sucesso" class="mensagem-sucesso">
+      Consulta Agendada com Sucesso!
+    </div>
+    <br><br>
+    <div class="consultas-marcadas-container">
+      <h3>Consultas Marcadas</h3>
+      <table class="consultas-marcadas" id="tabela-consultas">
+        <thead>
+          <tr>
+            <th>Especialidade</th>
+            <th>Médico</th>
+            <th>Data</th>
+            <th>Horário</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Linhas serão adicionadas aqui via JS -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <script>
+  document.querySelector('form').addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    // Pega os valores do formulário
+    const especialidadeSelect = document.getElementById('especialidade');
+    const especialidade = especialidadeSelect.options[especialidadeSelect.selectedIndex].text;
+    const medicoSelect = document.getElementById('medico');
+    const medico = medicoSelect.options[medicoSelect.selectedIndex].text;
+    const data = document.getElementById('data').value;
+    const hora = document.getElementById('hora').value;
+
+    // Adiciona nova linha na tabela
+    const tabela = document.getElementById('tabela-consultas').querySelector('tbody');
+    const novaLinha = document.createElement('tr');
+    novaLinha.innerHTML = `
+      <td>${especialidade}</td>
+      <td>${medico}</td>
+      <td>${data.split('-').reverse().join('/')}</td>
+      <td>${hora}</td>
+    `;
+    tabela.appendChild(novaLinha);
+
+    // Exibe a mensagem de sucesso
+    const mensagem = document.getElementById('mensagem-sucesso');
+    mensagem.style.display = 'block';
+
+    // Limpa os campos do formulário
+    this.reset();
+  });
+</script>
+</body>
+</html>
