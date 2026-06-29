@@ -1,44 +1,48 @@
-/* Fundo da página */
 body {
   background: url('../images/fundoindex.jpg') no-repeat center center / cover;
   min-height: 100vh;
   margin: 0;
   padding: 0;
-  font-family: 'Poppins', Arial, sans-serif;
+  font-family: var(--font-body);
 }
 
-/* Container centralizado */
 .container {
   max-width: 420px;
   margin: 48px auto;
-  background: rgba(255,255,255,0.97);
-  border-radius: 18px;
-  box-shadow: 0 4px 32px rgba(0,0,0,0.09);
+  background: rgba(255, 255, 255, 0.97);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
   padding: 32px 28px 28px 28px;
   display: flex;
   flex-direction: column;
   align-items: stretch;
 }
 
-/* Títulos */
+@media (prefers-color-scheme: dark) {
+  .container,
+  .consultas-marcadas-container {
+    background: rgba(30, 30, 30, 0.97);
+  }
+}
+
 .container header h1 {
   text-align: center;
-  color: #00695c;
-  font-family: 'Montserrat', Arial, sans-serif;
+  color: var(--color-primary-dark);
+  font-family: var(--font-heading);
   font-weight: 700;
   margin-bottom: 8px;
   font-size: 1.5em;
 }
+
 .container h2 {
   text-align: center;
-  color: #009688;
-  font-family: 'Montserrat', Arial, sans-serif;
+  color: var(--color-primary);
+  font-family: var(--font-heading);
   font-weight: 600;
   margin-bottom: 24px;
   font-size: 1.2em;
 }
 
-/* Formulário */
 form {
   display: flex;
   flex-direction: column;
@@ -47,99 +51,93 @@ form {
 
 label {
   font-weight: 600;
-  color: #00695c;
+  color: var(--color-primary-dark);
   margin-bottom: 4px;
   font-size: 1em;
 }
 
 input[type="date"],
 select.select {
-  font-family: 'Poppins', Arial, sans-serif;
+  font-family: var(--font-body);
   padding: 10px 12px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
   font-size: 1em;
-  background-color: #fff;
-  color: #333;
+  background-color: var(--color-white);
+  color: var(--color-text);
   box-sizing: border-box;
-  margin-bottom: 0;
-  transition: border 0.2s, box-shadow 0.2s;
+  transition: border var(--transition), box-shadow var(--transition);
+  width: 100%;
 }
 
 input[type="date"]:focus,
 select.select:focus {
-  border-color: #009688;
+  border-color: var(--color-primary);
   outline: none;
-  box-shadow: 0 0 5px rgba(0, 150, 136, 0.18);
+  box-shadow: 0 0 0 3px rgba(0, 150, 136, 0.15);
 }
 
-/* Botão Agendar */
 .btn-primary-salvar {
-  background: linear-gradient(90deg, #009688 60%, #43cea2 100%);
+  background: var(--gradient-primary);
   color: #fff;
   border: none;
-  border-radius: 8px;
+  border-radius: var(--radius-sm);
   padding: 12px 0;
-  font-size: 1.08em;
-  font-family: 'Montserrat', Arial, sans-serif;
+  font-size: 1.05em;
+  font-family: var(--font-heading);
   font-weight: 600;
   cursor: pointer;
-  transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-  margin: 20px auto 0 auto; /* Centraliza horizontalmente */
-  width: 200px;             /* Largura fixa */
+  transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+  box-shadow: var(--shadow-sm);
+  margin: 20px auto 0 auto;
+  width: 200px;
   display: block;
 }
 
 .btn-primary-salvar:hover {
-  background: linear-gradient(90deg, #00695c 60%, #009688 100%);
+  background: var(--gradient-primary-hover);
   transform: translateY(-2px) scale(1.04);
-  box-shadow: 0 4px 16px rgba(0,150,136,0.10);
+  box-shadow: var(--shadow-md);
 }
 
-/* Botão Voltar */
 .btn-secondary {
-  background: #fff;
-  color: #00695c;
-  border: 2px solid #009688;
-  border-radius: 8px;
+  background: var(--color-white);
+  color: var(--color-primary-dark);
+  border: 2px solid var(--color-primary);
+  border-radius: var(--radius-sm);
   padding: 12px 0;
   font-size: 1em;
-  font-family: 'Montserrat', Arial, sans-serif;
+  font-family: var(--font-heading);
   font-weight: 600;
   cursor: pointer;
-  margin: 20px auto 0 auto; /* Centraliza horizontalmente */
-  width: 200px;             /* Largura fixa */
-  transition: background 0.2s, color 0.2s, border 0.2s;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  margin: 20px auto 0 auto;
+  width: 200px;
+  transition: background var(--transition), color var(--transition), border var(--transition);
+  box-shadow: var(--shadow-sm);
   display: block;
 }
 
 .btn-secondary:hover {
-  background: #e0f2f1;
-  color: #009688;
-  border-color: #43cea2;
+  background: var(--color-bg-light);
+  color: var(--color-primary);
+  border-color: var(--color-accent);
 }
 
-/* Mensagem de Sucesso */
 .mensagem-sucesso {
   display: none;
   position: fixed;
-  top: 10px; 
+  top: 10px;
   left: 50%;
   transform: translateX(-50%);
   background-color: #4caf50;
   color: white;
   padding: 15px 20px;
-  border-radius: 5px;
+  border-radius: var(--radius-sm);
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
   z-index: 1000;
   font-size: 1em;
-  /* Remova ou comente a linha abaixo para a mensagem não sumir */
-  /* animation: fadeOut 3s forwards; */
 }
 
-/* Botões Agendar - Novo Estilo */
 .botoes-agendar {
   display: flex;
   justify-content: space-between;
@@ -154,20 +152,19 @@ select.select:focus {
   display: inline-block;
 }
 
-/* Consultas Marcadas - Novo Estilo */
 .consultas-marcadas-container {
   margin-top: 40px;
   background: #fff;
-  border-radius: 16px;
-  box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
   padding: 24px 18px;
 }
 
 .consultas-marcadas-container h3 {
   margin-top: 0;
-  color: #009688;
-  font-family: 'Montserrat', Arial, sans-serif;
-  font-size: 1.15em;
+  color: var(--color-primary);
+  font-family: var(--font-heading);
+  font-size: 1.1em;
   margin-bottom: 18px;
   text-align: center;
 }
@@ -175,16 +172,17 @@ select.select:focus {
 .consultas-marcadas {
   width: 100%;
   border-collapse: collapse;
-  font-family: 'Poppins', Arial, sans-serif;
+  font-family: var(--font-body);
 }
 
-.consultas-marcadas th, .consultas-marcadas td {
+.consultas-marcadas th,
+.consultas-marcadas td {
   padding: 12px 8px;
   text-align: center;
 }
 
 .consultas-marcadas th {
-  background: linear-gradient(90deg, #009688 60%, #43cea2 100%);
+  background: var(--gradient-primary);
   color: #fff;
   font-weight: 600;
   border: none;
@@ -192,27 +190,36 @@ select.select:focus {
 
 .consultas-marcadas tr {
   border-bottom: 1px solid #e0e0e0;
-  transition: background 0.2s;
+  transition: background var(--transition);
 }
 
 .consultas-marcadas tr:hover {
-  background: #f1fdfb;
+  background: var(--color-bg-light);
 }
 
 .consultas-marcadas td {
-  color: #333;
+  color: var(--color-text);
   font-size: 1em;
 }
 
-/* Responsivo */
 @media (max-width: 600px) {
   .container {
     max-width: 98vw;
     padding: 16px 4vw 18px 4vw;
+    margin: 16px auto;
   }
+
   .btn-primary-salvar,
   .btn-secondary {
-    font-size: 1em;
-    padding: 12px 0;
+    width: 100%;
+  }
+
+  .botoes-agendar {
+    flex-direction: column;
+  }
+
+  .botoes-agendar .btn-primary-salvar,
+  .botoes-agendar .btn-secondary {
+    width: 100%;
   }
 }

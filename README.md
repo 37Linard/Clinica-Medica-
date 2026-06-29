@@ -1,78 +1,86 @@
-````markdown
-# 🩺 Medical Clinic Web Page
+# Clínica Vida e Saúde
 
-A clean and responsive **landing page for a medical clinic**, built with HTML, CSS, and JavaScript. Ideal for clinics looking to establish a modern online presence with essential information and easy contact access.
-
----
-
-## 📌 Overview
-
-This project was designed with a user-first approach, focusing on accessibility, visual clarity, and smooth navigation. It’s a perfect starting point for healthcare professionals or small clinics to showcase their services online.
+Sistema web para clínica médica com agendamento de consultas, autenticação e painel de informações. Construído com HTML, CSS e JavaScript puros.
 
 ---
 
-## 💡 Features
+## Páginas
 
-- 📃 About the clinic (mission, vision, values)
-- 🩺 List of medical specialties
-- 🕒 Opening hours
-- 📍 Google Maps location
-- 📬 Contact/appointment form
-
----
-
-## 🛠️ Tech Stack
-
-- HTML5  
-- CSS
-- JavaScript   
+| Arquivo | Descrição |
+|---|---|
+| `html/index.html` | Landing page principal com carrossel, abas e mapa |
+| `html/login.html` | Login por CPF e senha |
+| `html/registro.html` | Cadastro de novo paciente |
+| `html/agendar.html` | Agendamento de consultas |
+| `html/esqueceu.html` | Recuperação de senha |
 
 ---
 
-## 📸 Preview
+## Tech Stack
 
-![screenshot](put-your-screenshot-link-here)
-
-> Replace the link above with your own preview image if available.
-
----
-
-## 🚀 Getting Started
-
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/37Linard/Clinica-Medica-
-````
-
-2. Open the `index.html` file in your browser
-3. (Optional) Set up the backend to handle the contact form
+- HTML5
+- CSS (sem frameworks)
+- JavaScript vanilla
+- Font Awesome 6.5
 
 ---
 
-## 🎯 Project Goals
+## Design System
 
-* Practice front-end development in a real-world healthcare context
-* Build a customizable and reusable template
-* Add value to a professional portfolio
+Todas as cores e tokens vivem em `css/variables.css`:
 
----
+```css
+--color-primary: #009688
+--color-primary-dark: #00695c
+--color-accent: #43cea2
+```
 
-## 👨‍⚕️ Inspiration
-
-This project was inspired by the need for accessible, modern websites in the medical field — especially for small clinics and independent professionals who need something straightforward and professional.
-
----
-
-## 🤝 Contributing
-
-Pull requests are welcome! If you have suggestions for improvement, feel free to fork the project, open an issue, or submit a PR.
+Para mudar a paleta da clínica, edite apenas esse arquivo. Dark mode automático via `prefers-color-scheme`.
 
 ---
 
-## 📬 Contact
+## Estrutura
 
-For questions or collaborations, feel free to reach out via GitHub Issues or Discussions.
+```
+├── css/
+│   ├── variables.css       # Tokens de design (cores, sombras, fontes)
+│   ├── style.css           # Base compartilhada (forms, botões, sidebar)
+│   ├── styleindex.css      # Estilos da home
+│   ├── styleagendar.css    # Estilos da página de agendamento
+│   ├── stylelogin.css      # Overrides do login
+│   ├── styleregistro.css   # Overrides do cadastro
+│   └── styleesqueceu.css   # Estilos da recuperação de senha
+├── html/
+├── images/
+└── javascript/
+    ├── carrossel.js
+    ├── tabs.js
+    ├── sidebar.js
+    ├── homebar.js
+    ├── acessibilidade.js
+    └── app.js
+```
 
 ---
 
+## Como rodar
 
+```bash
+git clone https://github.com/37Linard/Clinica-Medica-
+```
+
+Abra `html/index.html` no navegador. Não requer servidor.
+
+---
+
+## Acessibilidade
+
+- Widget fixo com opções de alto contraste e texto maior
+- Integração com VLibras (Libras)
+- Focus rings visíveis em todos os inputs
+
+---
+
+## Contribuindo
+
+Pull requests são bem-vindos. Para mudanças grandes, abra uma issue primeiro.
